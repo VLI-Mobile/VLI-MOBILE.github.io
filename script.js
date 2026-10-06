@@ -1,0 +1,14 @@
+const menu=document.querySelector('.menu-toggle');const nav=document.querySelector('.nav');if(menu){menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open)})}
+const data={
+dad:{tag:'Energy & Wellness',title:'The DAD Drip®',copy:'A nutrient-focused formulation intended for consideration as part of a broader wellness routine. The exact formulation, quantities, indications and treatment considerations will be published from current product documentation once reviewed.'},
+skin:{tag:'Skin & Wellness',title:'Skin Glow®',copy:'A formulation containing selected vitamins, minerals and glutathione, subject to individual clinical assessment. Final consumer-facing claims and formulation details will be confirmed against the current product documentation.'},
+fertility:{tag:'Fertility & Wellness',title:'Fertility®',copy:'A nutrient-focused formulation whose consumer-facing indications require careful clinical and regulatory review. Vita-Life will publish only approved, supportable information.'},
+hbp:{tag:'Cardiovascular Wellness',title:'HBP®',copy:'This formulation is undergoing clinical and regulatory review before any public therapeutic claims are made. Vita-Life will not market an infusion as treating or managing hypertension without appropriate clinical and regulatory confirmation.'},
+brain:{tag:'Brain & Cognitive Wellness',title:'Brain Power®',copy:'A nutrient-focused formulation. Final consumer-facing wording will follow review of the current product label and clinical information sheet.'},
+kojic:{tag:'Skin Radiance',title:'Kojic Acid · Glow Extreme®',copy:'A skin-focused formulation. Marketing terminology, indications and safety information will be confirmed from the current product documentation before publication.'},
+luxury:{tag:'Premium Skin & Wellness',title:'Glutathione · Luxury®',copy:'A glutathione-containing formulation. Final positioning and consumer-facing claims will be based on current product documentation and appropriate professional review.'}
+};
+const modal=document.getElementById('iv-modal');const close=()=>{modal.classList.remove('active');modal.setAttribute('aria-hidden','true')};
+document.querySelectorAll('.details-btn').forEach(btn=>btn.addEventListener('click',()=>{const d=data[btn.dataset.target];document.getElementById('modal-tag').textContent=d.tag;document.getElementById('modal-title').textContent=d.title;document.getElementById('modal-copy').textContent=d.copy;modal.classList.add('active');modal.setAttribute('aria-hidden','false')}));
+document.querySelectorAll('[data-close="true"],.modal-close').forEach(x=>x.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+document.querySelectorAll('a[href="#screening"]').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
